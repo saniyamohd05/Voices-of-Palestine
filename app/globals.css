@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --palestine-red: #ce1126;
+  --palestine-green: #007a3d;
+  --palestine-white: #ffffff;
+  --palestine-black: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cairo", "Amiri", sans-serif;
+  background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+  min-height: 100vh;
+}
+
+.font-cairo {
+  font-family: "Cairo", sans-serif;
+}
+
+.font-amiri {
+  font-family: "Amiri", serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ce1126;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a00e1f;
+}
+
+/* Palestine flag animation */
+@keyframes flag-wave {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(2px) rotate(-1deg);
+  }
+}
+
+.flag-wave {
+  animation: flag-wave 3s ease-in-out infinite;
+}
+
+/* Candle flicker animation */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.candle-flicker {
+  animation: flicker 2s ease-in-out infinite;
+}
+
+/* Mourning mode */
+.mourning-mode {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.mourning-mode:not(.mourning-mode) {
+  filter: grayscale(0%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  .font-arabic {
+    font-family: Tahoma, "Arial Unicode MS", sans-serif;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer components {
+  .palestine-gradient {
+    background: linear-gradient(135deg, #ff0000, #ffffff, #00ff00, #000000);
+  }
+}
